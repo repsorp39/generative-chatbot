@@ -1,0 +1,104 @@
+.banner-chatbox {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: $fontVician;
+    color: $white;
+    background-color: $VeryDarkBlue;
+
+    h1 {
+        font-size: 28px;
+        padding-bottom: 5px;
+        border-bottom: rgb(16, 220, 50) dotted 1px;
+        @media screen and (max-width:900px)  {
+            font-size: 18px;
+        }
+        @media screen and (max-width:600px)  {
+            font-size: 15px;
+        }
+    }
+
+    i {
+        color: rgb(34, 231, 100);
+
+    }
+}
+
+.chat-box {
+    position: relative; 
+    width: 700px;
+    margin: 20px auto;
+    height: 600px;
+    padding: 15px;
+    background-color: $VeryDarkBlue;
+    @media screen and (max-width:900px) and (min-width:450px) {
+       width: 400px;
+    }
+    @media screen and (max-width:450px)  {
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+
+     }
+  
+
+}
+
+.message-container {
+    height: 450px;
+    width: 650px;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 10px 5px 0px 5px;
+    overflow-y: auto;
+    background-image: url(../assets/img/IA.webp);
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width:none;
+    @media screen and (max-width:900px) and (min-width:450px){
+        width: 350px;
+     }
+     @media screen and (max-width:450px)  {
+        width: 100%;
+        height: 85%;
+     }
+}
+
+
+.logout {
+    float: right;
+    cursor: pointer;
+    color:rgb(195, 34, 34) !important;
+}
+
+.prompt {
+    float: right;
+    clear: both;
+    padding: 8px;
+    border-radius: 15px;
+    background-color: aliceblue;
+    font-family: $fontPlay;
+    max-width: 70%;
+    margin: 8px 0;
+}
+
+.response {
+    float: left;
+    clear: both;
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+    max-width: 70%;
+    font-family: $fontAbel;
+    line-height: 20px;
+    background-color: rgb(39, 147, 242);
+}
+
+.loader {
+    display: inline;
+    width: 40px;
+    height: 25px;
+    border-radius: 50px;
+    margin: 0;
+}
