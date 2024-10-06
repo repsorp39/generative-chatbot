@@ -16,6 +16,7 @@ const Inscription = () => {
   const regexEmail = new RegExp(
     "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
   );
+  const [isLoading,setLoading] = useState(false);
   const [errorEmail, setEmailErr] = useState("");
   const [errorPass, setPassErr] = useState("");
 
@@ -35,6 +36,7 @@ const Inscription = () => {
       setPassErr("");
     }
 
+    setLoading(true);
     const url = "https://chatbot-google-api.onrender.com/connexion/insc";
     const data = {
       email,
@@ -50,12 +52,14 @@ const Inscription = () => {
             localStorage.setItem("token", res.data.token);
             window.location.reload();
           })
-          .catch((err) => console.log(err));
+
       })
       .catch((err) => {
         if (err.response.status === 400);
         setEmailErr("This email already exist!");
-      });
+        setLoading(false);
+      })
+      
   }
   return (
     <>
@@ -90,7 +94,7 @@ const Inscription = () => {
           />
           {errorPass && <p className="error"> {errorPass}</p>}
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={isLoading}>Sign Up {isLoading ? "..." :""} </button>
         <span className="no-account">
           Have already an account? <Link to="/log">Sign in!</Link>
         </span>

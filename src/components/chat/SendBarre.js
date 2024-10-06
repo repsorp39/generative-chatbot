@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import loader from "../../assets/img/loader.gif";
 
-const SendBarre = () => {
+const SendBarre = ({fetchMessage}) => {
   const [prompt, setPrompt] = useState("");
   const inputRef = useRef(null);
   const [seeImgPreview, setPreview] = useState(false);
@@ -24,10 +24,10 @@ const SendBarre = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         })
-        .then((res) => {
+        .then(async (res) => {
           setLoading(false)
           inputRef.current.value = "";
-
+          await fetchMessage()
         }
         )
         .catch((err) => console.log(err));
@@ -45,10 +45,10 @@ const SendBarre = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         })
-        .then((res) =>{ 
-          setLoading(false);
-          inputRef.current.value = "";
-
+        .then(async (res) =>{  
+              await fetchMessage();
+              setLoading(false);
+              inputRef.current.value = "";     
         })
         .catch((err) => console.log(err));
     }
@@ -80,6 +80,7 @@ const SendBarre = () => {
           type="text"
           ref={inputRef}
           placeholder="What are you looking for today ...?"
+          required
           onChange={(e) => setPrompt(e.target.value)}
         />
         <div>

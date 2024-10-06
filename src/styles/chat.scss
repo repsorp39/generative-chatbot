@@ -51,7 +51,9 @@
     border-radius: 20px;
     padding: 10px 5px 0px 5px;
     overflow-y: auto;
+    background-color: black;
     background-image: url(../assets/img/IA.webp);
+    
     &::-webkit-scrollbar {
         display: none;
     }

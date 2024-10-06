@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LoginContext } from "../tools/LoginContext";
 
 const Logout = () => {
+  const {setLogin} = useContext(LoginContext);
   return (
     <>
       <i
@@ -9,6 +11,7 @@ const Logout = () => {
         onClick={() => {
           localStorage.removeItem("token");
           window.location.reload();
+          setLogin(false);
         }}
       ></i>
     </>

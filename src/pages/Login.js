@@ -12,6 +12,7 @@ const Login = () => {
     if (isLogin) navigate("/chat", { replace: true });
   }, []);
 
+  const [isLoading,setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const regexEmail = new RegExp(
@@ -38,6 +39,7 @@ const Login = () => {
       setPassErr("");
     }
 
+    setLoading(true);
     const url = "https://chatbot-google-api.onrender.com/connexion/login";
     axios
       .post(url, { email, password })
@@ -46,8 +48,10 @@ const Login = () => {
         window.location.reload();
       })
       .catch((error) => {
-        if (error) setConnErro(error.response.data.message);
-      });
+        console.log(error);
+        setConnErro(error.response.data.message);
+      })
+      .finally(() =>setLoading(false));
   }
   return (
     <>
@@ -77,7 +81,7 @@ const Login = () => {
           />
           {errorPass && <p className="error"> {errorPass}</p>}
         </div>
-        <button type="submit">Log in</button>
+        <button type="submit" disabled={isLoading}>Log in {isLoading ? "...":""}</button>
         <span className="no-account">
           Don't have account ? <Link to="/insc">Sign up</Link>
         </span>
