@@ -8,3 +8,4 @@ Ce projet frontend utilise l'API Google Generative AI pour permettre aux utilisa
 - **Historique des Conversations** : Affiche l'historique des interactions de l'utilisateur avec le chatbot.
 - **Nouveau Prompt** : Envoie des prompts texte ou image au chatbot pour recevoir une réponse générée par l'IA.
 
+[https://generative-chatbot.onrender.com](https://generative-chatbot.onrender.com)
